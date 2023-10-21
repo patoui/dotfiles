@@ -1,0 +1,18 @@
+# Git aliases
+
+alias gcep='git config user.email "patrique.ouimet@gmail.com"'
+alias gcn='git config user.name "Patrique Ouimet"'
+alias nah='git reset --hard && git clean -df'
+
+git config --global alias.k checkout
+git config --global alias.l pull
+git config --global alias.p push
+git config --global alias.f diff
+git config --global alias.c 'commit -am'
+git config --global alias.lo 'pull origin'
+git config --global alias.s status
+git config --global alias.cb 'checkout -b'
+git config --global alias.po 'push origin'
+git config --global alias.cne 'commit --amend --no-edit'
+git config --global alias.aa 'add .'
+git config --global alias.g "log --graph -10 --branches --remotes --tags  --format=format:'%Cgreen%h %Creset• %<(75,trunc)%s (%cN, %cr) %Cred%d' --date-order"
