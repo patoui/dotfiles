@@ -8,4 +8,4 @@ Repository used to house all my configuration files
 - perform all subsequent actions within ITerm2
 - install [Homebrew](https://brew.sh/)
 - clone this repository `git clone git@github.com:patoui/dotfiles.git .dotfiles`
-- run `sh ./.dotfiles/install.sh`
+- run `bash ./.dotfiles/install.sh`
