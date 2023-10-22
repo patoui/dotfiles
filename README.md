@@ -1,6 +1,6 @@
 # dotfiles
 
-Repository used to house all my configuration files and provide an easy run to setup my environment
+Repository used to house all my configuration files and provide a script to setup my environment
 
 ## steps
 
