@@ -160,4 +160,12 @@ else
 	success "nvim alread symlinked"
 fi
 
+if ! command -v watchman &> /dev/null; then
+	info "Installing watchman..."
+	brew install watchman
+	success "Successfully install watchman"
+else
+	success "watchman already installed"
+fi
+
 success "Finished configuring environment"
