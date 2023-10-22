@@ -5,5 +5,11 @@ Repository used to house all my configuration files and provide an easy run to s
 ## steps
 
 - install [ITerm2](https://iterm2.com/), and open ITerm2
-- clone this repository `git clone git@github.com:patoui/dotfiles.git .dotfiles` in `$HOME` directory
-- run `bash ./.dotfiles/install.sh` from the `$HOME` directory
+- clone this repository in the `$HOME` directory
+```
+git clone git@github.com:patoui/dotfiles.git .dotfiles
+```
+- run the command below from the `$HOME` directory
+```
+bash ./.dotfiles/install.sh
+```
