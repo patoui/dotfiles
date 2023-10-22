@@ -20,11 +20,10 @@ fail () {
   exit
 }
 
-info "Installing dotfiles..."
-
-info "Symlinking zshrc..."
+info "Configuring environment..."
 
 if [ ! -f $HOME/.zshrc ]; then
+	info "Symlinking zshrc..."
 	ln -s $HOME/.dotfiles/.zshrc $HOME/.zshrc
 	success "Successfully symlinked zshrc"
 else
@@ -40,21 +39,33 @@ else
 fi
 
 if ! command -v brew &> /dev/null; then
-	info "Installing Homebrew..."
+	info "Installing homebrew..."
 	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 	(echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> ~/.zprofile
 	eval "$(/opt/homebrew/bin/brew shellenv)"
 	success "Successfully installed Homebrew"
 else
-	success "Homebrew already installed"
+	success "homebrew already installed"
 fi
 
 if ! command -v php &> /dev/null; then
-	info "Installing PHP..."
+	info "Installing php..."
 	brew install php
-	success "Successfully installed PHP"
+	success "Successfully installed php"
 else
-	success "PHP already installed"
+	success "php already installed"
+fi
+
+if ! command -v composer &> /dev/null; then
+	info "Installing composer..."
+	php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+	php -r "if (hash_file('sha384', 'composer-setup.php') === 'e21205b207c3ff031906575712edab6f13eb0b361f2085f1f1237b7126d785e826a450292b6cfd1d64d92e6563bbde02') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+	php composer-setup.php
+	php -r "unlink('composer-setup.php');"
+	sudo mv composer.phar /usr/local/bin/composer
+	success "Successfully installed composer"
+else
+	success "composer already installed"
 fi
 
 if [ ! -f $HOME/.nvm/nvm.sh ]; then
@@ -66,13 +77,13 @@ else
 fi
 
 if ! command -v node &> /dev/null; then
-	info "Installing Node..."
+	info "Installing node..."
 	. $HOME/.nvm/nvm.sh
 	nvm install --lts
 	nvm alias default node
-	success "Successfully installed Node"
+	success "Successfully installed node"
 else
-	success "Node already installed"
+	success "node already installed"
 fi
 
 if ! command -v python3 &> /dev/null; then
@@ -80,7 +91,7 @@ if ! command -v python3 &> /dev/null; then
 	brew install python
 	success "Successfully installed python"
 else
-	success "Python already installed"
+	success "python already installed"
 fi
 
 if ! command -v go &> /dev/null; then
@@ -88,7 +99,7 @@ if ! command -v go &> /dev/null; then
 	brew install go
 	success "Successfully installed go"
 else
-	success "Go already installed"
+	success "go already installed"
 fi
 
 # Neovim dependencies
@@ -117,4 +128,4 @@ else
 	success "nvim alread symlinked"
 fi
 
-success "Completed dotfiles installation"
+success "Finished configuring environment"
