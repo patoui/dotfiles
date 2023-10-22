@@ -68,6 +68,38 @@ else
 	success "composer already installed"
 fi
 
+if ! command -v pkg-config &> /dev/null; then
+	info "Installing pkg-config..."
+	brew install pkg-config
+	success "Successfully installed pkg-config"
+else
+	success "pkg-config already installed"
+fi
+
+if php -r 'exit((int) extension_loaded("redis"));'; then
+	info "Installing php-redis..."
+	pecl install redis
+	success "Successfully installed php-redis"
+else
+	success "php-redis already installed"
+fi
+
+if ! command -v convert &> /dev/null; then
+	info "Installing imagemagick..."
+	brew install imagemagick
+	success "Successfully installed imagemagick"
+else
+	success "imagemagick already installed"
+fi
+
+if php -r 'exit((int) extension_loaded("imagick"));'; then
+	info "Installing php-imagick..."
+	pecl install imagick
+	success "Successfully installed php-imagick"
+else
+	success "php-imagick already installed"
+fi
+
 if [ ! -f $HOME/.nvm/nvm.sh ]; then
 	info "Installing nvm..."
 	curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
