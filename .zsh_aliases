@@ -5,6 +5,8 @@ alias gcn='git config user.name "Patrique Ouimet"'
 alias nah='git reset --hard && git clean -df'
 
 # Git config
+git config --global user.email "patrique.ouimet@gmail.com"
+git config --global user.name "Patrique Ouimet"
 git config --global core.editor "nvim"
 git config --global alias.k checkout
 git config --global alias.l pull
