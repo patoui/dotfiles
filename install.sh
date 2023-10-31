@@ -168,4 +168,12 @@ else
 	success "watchman already installed"
 fi
 
+if ! command -v jq &> /dev/null; then
+	info "Installing jq..."
+	brew install jq
+	success "Successfully install jq"
+else
+	success "jq already installed"
+fi
+
 success "Finished configuring environment"
