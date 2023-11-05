@@ -1,8 +1,8 @@
-# dotfiles
+# dotfiles 🗄️
 
 Repository used to house all my configuration files and provide a script to setup my environment
 
-## steps
+## steps 🚶
 
 - install [ITerm2](https://iterm2.com/), and open ITerm2
 - clone this repository in the `$HOME` directory
