@@ -176,4 +176,12 @@ else
 	success "jq already installed"
 fi
 
+if ! command -v ngrok &> /dev/null; then
+	info "Installing ngrok..."
+	brew install ngrok
+	success "Successfully install ngrok"
+else
+	success "ngrok already installed"
+fi
+
 success "Finished configuring environment"
