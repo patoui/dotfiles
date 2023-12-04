@@ -184,4 +184,20 @@ else
 	success "ngrok already installed"
 fi
 
+if ! command -v wget &> /dev/null; then
+	info "Installing wget..."
+	brew install wget
+	success "Successfully install wget"
+else
+	success "wget already installed"
+fi
+
+if ! command -v lua &> /dev/null; then
+	info "Installing lua..."
+	brew install lua
+	success "Successfully install lua"
+else
+	success "lua already installed"
+fi
+
 success "Finished configuring environment"

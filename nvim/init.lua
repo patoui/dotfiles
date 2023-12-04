@@ -190,7 +190,43 @@ require('lazy').setup({
   'rcarriga/nvim-dap-ui',
   'theHamsta/nvim-dap-virtual-text',
   'nvim-telescope/telescope-dap.nvim',
+
+  'onyx-lang/onyx.vim',
   }, {})
+
+local lspconfig = require 'lspconfig'
+local configs = require 'lspconfig.configs'
+
+configs.onyx = {
+    default_config = {
+        cmd = { "onyx", "lsp" },
+        filetypes = { "onyx" },
+        root_dir = function(filename)
+            local utils = require "lspconfig.util"
+            return utils.search_ancestors(filename, function(path)
+                if utils.path.is_file(utils.path.join(path, "onyx-lsp.ini")) then
+                    return path
+                end
+            end)
+        end;
+        settings = {}
+    }
+}
+
+lspconfig.onyx.setup {
+    on_attach = function(client)
+        print("Onyx LSP started.")
+    end
+}
+
+vim.filetype.add {
+    extension = {
+        onyx = "onyx",
+    },
+    pattern = {
+        [".*onyx$"] = "onyx",
+    },
+}
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
