@@ -336,8 +336,16 @@ require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
   ensure_installed = { 'go', 'lua', 'php', 'python', 'tsx', 'typescript', 'vim', 'vue', 'javascript', 'css', 'scss', 'html' },
 
+  modules = {},
+
+  -- Install parsers synchronously (only applied to `ensure_installed`)
+  sync_install = false,
+
   -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
   auto_install = false,
+
+  -- List of parsers to ignore installing (or "all")
+  ignore_install = {},
 
   highlight = { enable = true },
   indent = { enable = true, disable = { 'python' } },
