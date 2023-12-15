@@ -200,4 +200,12 @@ else
 	success "lua already installed"
 fi
 
+if ! command -v java &> /dev/null; then
+	info "Installing java..."
+	brew install java
+	success "Successfully install java"
+else
+	success "java already installed"
+fi
+
 success "Finished configuring environment"
