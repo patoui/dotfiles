@@ -23,3 +23,15 @@ git config --global alias.g "log --graph -10 --branches --remotes --tags  --form
 
 # Laravel
 alias sail='[ -f sail ] && sh sail || sh vendor/bin/sail'
+
+# Go
+# alias air='~/go/bin/air'
+
+# Python
+alias python='python3'
+
+# Time utility
+alias timee='/usr/bin/time'
+
+# Convert video to GIF
+alias video_to_gif='function video_to_gif(){ ffmpeg -i $1 $2 && gifsicle -O3 $2 -o $2};video_to_gif'
