@@ -208,4 +208,12 @@ else
 	success "java already installed"
 fi
 
+if ! command -v ffmpeg &> /dev/null; then
+	info "Installing ffmpeg..."
+	brew install ffmpeg
+	success "Successfully install ffmpeg"
+else
+	success "ffmpeg already installed"
+fi
+
 success "Finished configuring environment"
