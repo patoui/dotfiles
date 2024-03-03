@@ -219,6 +219,9 @@ vim.opt.rtp:prepend(lazypath)
 --
 -- NOTE: Here is where you install your plugins.
 require("lazy").setup({
+	-- ****CUSTOM PLUGINS****
+	"almo7aya/openingh.nvim",
+
 	-- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
 	"tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
 
@@ -826,9 +829,6 @@ require("lazy").setup({
 	--  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
 	--    For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
 	-- { import = 'custom.plugins' },
-
-	-- ****CUSTOM PLUGINS****
-	"almo7aya/openingh.nvim",
 })
 
 -- The line beneath this is called `modeline`. See `:help modeline`
