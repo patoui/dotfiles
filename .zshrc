@@ -28,6 +28,18 @@ export NVM_DIR="$HOME/.nvm"
 export ONYX_PATH="/Users/patoui/.onyx"
 export PATH="$ONYX_PATH/bin:$PATH"
 
+# Java
+# export JAVA_HOME=/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home
+
+# Android
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/platform-tools
+
+# Go
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+
+# Aseprite
+export PATH=$PATH:/Applications/Aseprite.app/Contents/MacOS
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
