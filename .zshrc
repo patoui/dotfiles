@@ -43,3 +43,9 @@ export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 # Aseprite
 export PATH=$PATH:/Applications/Aseprite.app/Contents/MacOS
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+
+# Compiler
+export LDFLAGS="-L/opt/homebrew/opt/libiconv/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/libiconv/include"
+export PATH="/opt/homebrew/opt/libiconv/bin:$PATH"
+export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
