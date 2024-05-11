@@ -216,4 +216,12 @@ else
 	success "ffmpeg already installed"
 fi
 
+if ! command -v sysbench &> /dev/null; then
+	info "Installing sysbench..."
+	brew install sysbench
+	success "Successfully install sysbench"
+else
+	success "sysbench already installed"
+fi
+
 success "Finished configuring environment"
