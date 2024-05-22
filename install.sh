@@ -224,4 +224,12 @@ else
 	success "sysbench already installed"
 fi
 
+if ! command -v psql &> /dev/null; then
+	info "Installing postgres..."
+	brew install postgresql@16
+	success "Successfully install postgres"
+else
+	success "postgres already installed"
+fi
+
 success "Finished configuring environment"
