@@ -30,6 +30,8 @@ export PATH="$ONYX_PATH/bin:$PATH"
 
 # Java
 # export JAVA_HOME=/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/liberica-jdk-17.jdk/Contents/Home
+
 
 # Android
 export ANDROID_HOME=$HOME/Library/Android/sdk
@@ -49,3 +51,14 @@ export LDFLAGS="-L/opt/homebrew/opt/libiconv/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/libiconv/include"
 export PATH="/opt/homebrew/opt/libiconv/bin:$PATH"
 export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
+
+# PostgreSQL
+export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
+
+# bun completions
+[ -s "/Users/patoui/.bun/_bun" ] && source "/Users/patoui/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
