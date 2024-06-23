@@ -232,4 +232,12 @@ else
 	success "postgres already installed"
 fi
 
+if ! command -v pt-mysql-summary &> /dev/null; then
+	info "Installing percona toolkit..."
+	brew install percona-toolkit
+	success "Successfully install percona toolkit"
+else
+	success "percona toolkit already installed"
+fi
+
 success "Finished configuring environment"
