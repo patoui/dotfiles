@@ -23,6 +23,7 @@ git config --global alias.g "log --graph -10 --branches --remotes --tags  --form
 
 # Laravel
 alias sail='[ -f sail ] && sh sail || sh vendor/bin/sail'
+alias art='php artisan'
 
 # Go
 # alias air='~/go/bin/air'
