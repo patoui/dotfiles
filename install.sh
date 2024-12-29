@@ -240,4 +240,12 @@ else
 	success "percona toolkit already installed"
 fi
 
+if ! command -v http &> /dev/null; then
+	info "Installing httpie..."
+	brew install httpie
+	success "Successfully install httpie"
+else
+	success "httpie already installed"
+fi
+
 success "Finished configuring environment"
