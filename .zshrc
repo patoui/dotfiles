@@ -1,3 +1,5 @@
+# Add deno completions to search path
+if [[ ":$FPATH:" != *":/Users/patoui/.zsh/completions:"* ]]; then export FPATH="/Users/patoui/.zsh/completions:$FPATH"; fi
 export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="robbyrussell"
@@ -28,6 +30,9 @@ export NVM_DIR="$HOME/.nvm"
 export ONYX_PATH="/Users/patoui/.onyx"
 export PATH="$ONYX_PATH/bin:$PATH"
 
+# PHP
+export PATH="$PATH:$HOME/.composer/vendor/bin"
+
 # Java
 # export JAVA_HOME=/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/liberica-jdk-17.jdk/Contents/Home
@@ -47,8 +52,9 @@ export PATH=$PATH:/Applications/Aseprite.app/Contents/MacOS
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 
 # Compiler
-export LDFLAGS="-L/opt/homebrew/opt/libiconv/lib"
-export CPPFLAGS="-I/opt/homebrew/opt/libiconv/include"
+export LDFLAGS="-L/opt/homebrew/opt/libiconv/lib -L/opt/homebrew/opt/openssl@3/lib -L/opt/homebrew/opt/pcre2/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/libiconv/include -I/opt/homebrew/opt/openssl@3/include -I/opt/homebrew/opt/pcre2/include"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/openssl@3/lib/pkgconfig:/opt/homebrew/opt/pcre2/lib/pkgconfig"
 export PATH="/opt/homebrew/opt/libiconv/bin:$PATH"
 export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
 
@@ -62,3 +68,10 @@ export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /opt/homebrew/bin/terraform terraform
+. "/Users/patoui/.deno/env"
+# Initialize zsh completions (added by deno install script)
+autoload -Uz compinit
+compinit
