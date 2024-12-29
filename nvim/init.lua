@@ -219,9 +219,21 @@ vim.opt.rtp:prepend(lazypath)
 --
 -- NOTE: Here is where you install your plugins.
 require("lazy").setup({
+	defaults = {
+		load = true,
+	},
 	-- ****CUSTOM PLUGINS****
 	"almo7aya/openingh.nvim",
-	"github/copilot.vim",
+	-- "github/copilot.vim",
+	{
+		"projekt0n/github-nvim-theme",
+		name = "github-theme",
+		config = function()
+			require("github-theme").setup({})
+
+			vim.cmd("colorscheme github_light_default")
+		end,
+	},
 
 	-- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
 	"tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
@@ -304,6 +316,9 @@ require("lazy").setup({
 			{ -- If encountering errors, see telescope-fzf-native README for install instructions
 				"nvim-telescope/telescope-fzf-native.nvim",
 
+				dir = "telescope-fzf-native",
+				name = "fzf",
+
 				-- `build` is used to run some command when the plugin is installed/updated.
 				-- This is only run then, not every time Neovim starts up.
 				build = "make",
@@ -314,7 +329,11 @@ require("lazy").setup({
 					return vim.fn.executable("make") == 1
 				end,
 			},
-			{ "nvim-telescope/telescope-ui-select.nvim" },
+			{
+				"nvim-telescope/telescope-ui-select.nvim",
+				dir = "telescope-ui-select",
+				name = "ui-select",
+			},
 
 			-- Useful for getting pretty icons, but requires special font.
 			--  If you already have a Nerd Font, or terminal set up with fallback fonts
@@ -551,8 +570,31 @@ require("lazy").setup({
 				-- But for many setups, the LSP (`tsserver`) will work just fine
 				-- tsserver = {},
 				--
+				denols = {},
 
-				intelephense = {},
+				intelephense = {
+					cmd = { "intelephense", "--stdio" },
+					filetypes = { "php" },
+					settings = {
+						intelephense = {
+							files = {
+								maxSize = 5000000,
+								excludes = {
+									"**/.git/**",
+									"**/.svn/**",
+									"**/.hg/**",
+									"**/CVS/**",
+									"**/.DS_Store/**",
+									"**/node_modules/**",
+									"**/bower_components/**",
+									"**/vendor/**/{Tests,tests}/**",
+									"**/.history/**",
+									"**/vendor/**/vendor/**",
+								},
+							},
+						},
+					},
+				},
 
 				lua_ls = {
 					-- cmd = {...},
