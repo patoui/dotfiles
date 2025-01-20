@@ -248,4 +248,28 @@ else
 	success "httpie already installed"
 fi
 
+if ! command -v bat &> /dev/null; then
+	info "Installing bat..."
+	brew install bat
+	success "Successfully install bat"
+else
+	success "bat already installed"
+fi
+
+if ! command -v fzf &> /dev/null; then
+	info "Installing fzf..."
+	brew install fzf
+	success "Successfully install fzf"
+else
+	success "fzf already installed"
+fi
+
+if ! command -v tldr &> /dev/null; then
+	info "Installing tldr..."
+	brew install tldr
+	success "Successfully install tldr"
+else
+	success "tldr already installed"
+fi
+
 success "Finished configuring environment"
