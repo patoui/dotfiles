@@ -662,10 +662,17 @@ require("lazy").setup({
 		"stevearc/conform.nvim",
 		opts = {
 			notify_on_error = false,
-			format_on_save = {
-				timeout_ms = 500,
-				lsp_fallback = true,
-			},
+			format_on_save = function(bufnr)
+				-- Disable with a global or buffer-local variable
+				if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
+					return nil
+				end
+				return { timeout_ms = 500, lsp_format = "fallback" }
+			end,
+			-- format_on_save = {
+			-- 	timeout_ms = 500,
+			-- 	lsp_fallback = true,
+			-- },
 			formatters_by_ft = {
 				lua = { "stylua" },
 				-- Conform can also run multiple formatters sequentially
@@ -885,6 +892,24 @@ require("lazy").setup({
 -- vim: ts=2 sts=2 sw=2 et
 
 -- ****CUSTOM STARTS HERE****
+-- Toggle autoformat
+vim.api.nvim_create_user_command("FormatDisable", function(args)
+	if args.bang then
+		-- FormatDisable! will disable formatting just for this buffer
+		vim.b.disable_autoformat = true
+	else
+		vim.g.disable_autoformat = true
+	end
+end, {
+	desc = "Disable autoformat-on-save",
+	bang = true,
+})
+vim.api.nvim_create_user_command("FormatEnable", function()
+	vim.b.disable_autoformat = false
+	vim.g.disable_autoformat = false
+end, {
+	desc = "Re-enable autoformat-on-save",
+})
 
 -- openingh Open In GitHub
 vim.keymap.set(
@@ -954,7 +979,8 @@ vim.keymap.set("n", "<leader>tt", function()
 
 	local symbol_name = CC.find_method_or_class_name(current_node)
 
-	local to_copy = string.format("./leaf test %s", relative_path, symbol_name)
+	local to_copy =
+		string.format("docker exec -it crm-php-1 vendor/bin/phpunit --stop-on-failure %s", relative_path, symbol_name)
 
 	if symbol_name ~= nil and symbol_name ~= "" then
 		local filter = string.format(" --filter=%s", symbol_name)
